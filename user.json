@@ -1,10 +1,22 @@
 [
-    {
-    "name":"test",
-    "surname":"test test",
-    "age":"12"
-},
-{},
-{},
-{}
+  {
+    "name": "test",
+    "surname": "test test",
+    "age": 32
+  },
+  {
+    "name": "test",
+    "surname": "test test",
+    "age": 18
+  },
+  {
+    "name": "test",
+    "surname": "test test",
+    "age": 24
+  },
+  {
+    "name": "test",
+    "surname": "test test",
+    "age": 20
+  }
 ]
