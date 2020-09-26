@@ -1,11 +1,13 @@
 import UserImage from "./UserImage.js";
 import User from "./User.js";
+import UserInfo from "./UserInfo.js";
 
 export default class UserCard {
-  constructor(user) {
+  constructor(user, infoClass = "userCardInfo", imgClass = "userImage") {
     if (user instanceof User) {
       this._user = user;
-      this._image = new UserImage(user);
+      this._image = new UserImage(user, imgClass);
+      this._info = new UserInfo(user, infoClass);
     } else {
       throw new TypeError("given value must be an instance of User class");
     }
@@ -16,20 +18,6 @@ export default class UserCard {
   }
   get image() {
     return this._image;
-  }
-
-  createInfo() {
-    const info = document.createElement("div");
-    info.classList.add("userCardInfo");
-
-    const name = document.createElement("h1");
-    name.textContent = this.user.fullName;
-
-    const position = document.createElement("p");
-    position.textContent = this.user.position;
-
-    info.append(name, position);
-    return info;
   }
 
   createButton() {
@@ -44,7 +32,7 @@ export default class UserCard {
     const card = document.createElement("article");
     card.classList.add("userCard");
 
-    card.append(this.image.render(), this.createInfo(), this.createButton());
+    card.append(this.image.render(), this._info.render(), this.createButton());
     return card;
   }
 }

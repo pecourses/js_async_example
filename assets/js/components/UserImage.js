@@ -1,6 +1,7 @@
 export default class UserImage {
-  constructor(user) {
+  constructor(user, imgClass) {
     this._user = user;
+    this._class = imgClass;
   }
 
   get user() {
@@ -43,7 +44,7 @@ export default class UserImage {
   createImage() {
     const img = document.createElement("img");
     img.src = this.user.imgSrc;
-    img.classList.add("userImage");
+    img.classList.add(this._class);
     img.addEventListener("error", this.onErrorImageHandler);
     return img;
   }
