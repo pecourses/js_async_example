@@ -19,6 +19,9 @@ export default class UserCard {
   get image() {
     return this._image;
   }
+  get info(){
+    return this._info
+  }
 
   createButton() {
     const btn = document.createElement("button");
@@ -31,8 +34,13 @@ export default class UserCard {
   render() {
     const card = document.createElement("article");
     card.classList.add("userCard");
+    card.dataset.id = this.user.id;
 
-    card.append(this.image.render(), this._info.render(), this.createButton());
+    card.onclick = () => {
+      history.pushState(null, null, `?id=${this.user.id}`);
+    };
+
+    card.append(this.image.render(), this.info.render(), this.createButton());
     return card;
   }
 }

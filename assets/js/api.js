@@ -1,5 +1,8 @@
 import * as CONSTANTS from "./CONSTANTS.js";
 
-export function fetchJson(url = `${CONSTANTS.API_BASE_URL}${CONSTANTS.USERS_URL}`) {
-    return fetch(url).then((res) => res.json());
-  }
+export default async function (
+  url = `${CONSTANTS.API_BASE_URL}${CONSTANTS.USERS_URL}`
+) {
+  const response = await fetch(url);
+  return response.json();
+}
